@@ -1,12 +1,15 @@
 package src
 
-// Linked lists have one root node.
-type LinkedList[T any] struct {
-	RootNode *LinkedListNode[T]
-}
-
 // Linked list nodes contain the data and the pointer for the next node.
 type LinkedListNode[T any] struct {
-	Data     T
-	NextNode *LinkedListNode[T]
+	data     T
+	nextNode *LinkedListNode[T]
+}
+
+func GetData[T any](node LinkedListNode[T]) T {
+	return node.data
+}
+
+func NextNode[T any](node *LinkedListNode[T]) LinkedListNode[T] {
+	return *node.nextNode
 }
