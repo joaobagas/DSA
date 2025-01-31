@@ -1,4 +1,4 @@
-package src
+package dstr
 
 // A graph does not contain one root node.
 type Graph[T any] struct {

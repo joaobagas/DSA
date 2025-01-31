@@ -1,4 +1,4 @@
-package src
+package dstr
 
 // Linked list nodes contain the data and the pointer for the next node.
 type LinkedListNode[T any] struct {

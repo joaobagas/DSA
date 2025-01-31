@@ -1,10 +1,10 @@
-package src
+package dstr
 
 type Tree[T any] struct {
-	RootNode TreeNode[T]
+	RootNode *TreeNode[T]
 }
 
 type TreeNode[T any] struct {
 	Data     T
-	Children []TreeNode[T]
+	Children []*TreeNode[T]
 }

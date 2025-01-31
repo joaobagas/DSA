@@ -1,11 +1,11 @@
 package main
 
 import (
-	"DSA/src"
+	"DSA/dstr"
 )
 
 func main() {
-	var a src.Array[int]
-	src.Append(a, 1)
-	src.Print(a)
+	var a dstr.Array[int]
+	dstr.Append(a, 1)
+	dstr.Print(a)
 }
