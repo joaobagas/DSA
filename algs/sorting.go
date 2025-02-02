@@ -2,7 +2,6 @@ package algs
 
 import (
 	"DSA/dstr"
-	"fmt"
 )
 
 type Ordered interface {
@@ -47,18 +46,24 @@ func RevisedBubbleSort[T Ordered](arr dstr.Array[T]) dstr.Array[T] {
 	return arr
 }
 
-func SelectionSort[T comparable](arr dstr.Array[T]) dstr.Array[T] {
+func SelectionSort[T Ordered](arr dstr.Array[T]) dstr.Array[T] {
 	size := dstr.Size(arr)
 	for i := 0; i < size; i++ {
-		fmt.Println(size)
+		minIndex := i
+		for j := i + 1; i < size; j++ {
+			if dstr.Get(arr, i) > dstr.Get(arr, j) {
+				minIndex = j
+			}
+		}
+		dstr.Swap(&arr, i, minIndex)
 	}
 	return arr
 }
 
-func InsertionSort[T comparable](arr dstr.Array[T]) dstr.Array[T] {
+func InsertionSort[T Ordered](arr dstr.Array[T]) dstr.Array[T] {
 	return arr
 }
 
-func QuickSort[T comparable](arr dstr.Array[T]) dstr.Array[T] {
+func QuickSort[T Ordered](arr dstr.Array[T]) dstr.Array[T] {
 	return arr
 }
