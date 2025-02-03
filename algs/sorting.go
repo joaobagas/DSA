@@ -4,21 +4,22 @@ import (
 	"DSA/dstr"
 )
 
-type Ordered interface {
+// Interface to ensure that the variabls are numbers.
+type ordered interface {
 	~int | ~int8 | ~int16 | ~int32 | ~int64 |
 		~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64 |
 		~float32 | ~float64
 }
 
-func BubbleSort[T Ordered](arr dstr.Array[T]) dstr.Array[T] {
-	size := dstr.Size(arr)
+func BubbleSort[T ordered](arr dstr.Array[T]) dstr.Array[T] {
+	size := dstr.SizeOfArray(arr)
 
 	for i := 0; i < size; i++ {
 		for j := 0; j < size-i-1; j++ {
-			val1 := dstr.Get[T](arr, j)
-			val2 := dstr.Get[T](arr, j+1)
+			val1 := dstr.GetFromArray(arr, j)
+			val2 := dstr.GetFromArray(arr, j+1)
 			if val1 > val2 {
-				dstr.Swap[T](&arr, j, j+1)
+				dstr.SwapInArray(&arr, j, j+1)
 			}
 		}
 	}
@@ -26,16 +27,16 @@ func BubbleSort[T Ordered](arr dstr.Array[T]) dstr.Array[T] {
 	return arr
 }
 
-func RevisedBubbleSort[T Ordered](arr dstr.Array[T]) dstr.Array[T] {
-	size := dstr.Size(arr)
+func RevisedBubbleSort[T ordered](arr dstr.Array[T]) dstr.Array[T] {
+	size := dstr.SizeOfArray(arr)
 
 	for i := 0; i < size; i++ {
 		isSwapped := false
 		for j := 0; j < size-i-1; j++ {
-			val1 := dstr.Get(arr, j)
-			val2 := dstr.Get(arr, j+1)
+			val1 := dstr.GetFromArray(arr, j)
+			val2 := dstr.GetFromArray(arr, j+1)
 			if val1 > val2 {
-				dstr.Swap(&arr, j, j+1)
+				dstr.SwapInArray(&arr, j, j+1)
 				isSwapped = true
 			} else if !isSwapped {
 				break
@@ -46,24 +47,34 @@ func RevisedBubbleSort[T Ordered](arr dstr.Array[T]) dstr.Array[T] {
 	return arr
 }
 
-func SelectionSort[T Ordered](arr dstr.Array[T]) dstr.Array[T] {
-	size := dstr.Size(arr)
+func SelectionSort[T ordered](arr dstr.Array[T]) dstr.Array[T] {
+	size := dstr.SizeOfArray(arr)
 	for i := 0; i < size; i++ {
 		minIndex := i
-		for j := i + 1; i < size; j++ {
-			if dstr.Get(arr, i) > dstr.Get(arr, j) {
+		for j := i + 1; j < size; j++ {
+			if dstr.GetFromArray(arr, i) > dstr.GetFromArray(arr, j) {
 				minIndex = j
 			}
 		}
-		dstr.Swap(&arr, i, minIndex)
+		dstr.SwapInArray(&arr, i, minIndex)
 	}
 	return arr
 }
 
-func InsertionSort[T Ordered](arr dstr.Array[T]) dstr.Array[T] {
-	return arr
-}
+func InsertionSort[T ordered](arr dstr.Array[T]) dstr.Array[T] {
+	size := dstr.SizeOfArray(arr)
+	for i := 1; i < size; i++ {
+		val := dstr.GetFromArray(arr, i)
 
-func QuickSort[T Ordered](arr dstr.Array[T]) dstr.Array[T] {
+		for j := i - 1; j >= 0; j-- {
+			dstr.PrintArray(arr)
+			if val < dstr.GetFromArray(arr, j) {
+				arr = dstr.RemoveFromArray(arr, i)
+				arr = dstr.InsertInArray(arr, j, val)
+				break
+			}
+		}
+	}
+
 	return arr
 }

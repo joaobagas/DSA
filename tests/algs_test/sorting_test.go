@@ -9,13 +9,55 @@ import (
 func TestBubbleSort(t *testing.T) {
 	var arr dstr.Array[int]
 
-	arr = dstr.Append(arr, 6)
-	arr = dstr.Append(arr, 4)
-	arr = dstr.Append(arr, 3)
+	arr = dstr.AppendToArray(arr, 6)
+	arr = dstr.AppendToArray(arr, 4)
+	arr = dstr.AppendToArray(arr, 3)
 
 	arr = algs.BubbleSort(arr)
 
-	if dstr.Get(arr, 0) != 3 || dstr.Get(arr, 1) != 4 || dstr.Get(arr, 2) != 6 {
+	if dstr.GetFromArray(arr, 0) != 3 || dstr.GetFromArray(arr, 1) != 4 || dstr.GetFromArray(arr, 2) != 6 {
 		t.Fatalf("There is an error witht the bubble sort function!")
+	}
+}
+
+func TestBubbleSortRevised(t *testing.T) {
+	var arr dstr.Array[int]
+
+	arr = dstr.AppendToArray(arr, 6)
+	arr = dstr.AppendToArray(arr, 4)
+	arr = dstr.AppendToArray(arr, 3)
+
+	arr = algs.RevisedBubbleSort(arr)
+
+	if dstr.GetFromArray(arr, 0) != 3 || dstr.GetFromArray(arr, 1) != 4 || dstr.GetFromArray(arr, 2) != 6 {
+		t.Fatalf("There is an error witht the revised bubble sort function!")
+	}
+}
+
+func TestSelectionSort(t *testing.T) {
+	var arr dstr.Array[int]
+
+	arr = dstr.AppendToArray(arr, 6)
+	arr = dstr.AppendToArray(arr, 4)
+	arr = dstr.AppendToArray(arr, 3)
+
+	arr = algs.SelectionSort(arr)
+
+	if dstr.GetFromArray(arr, 0) != 3 || dstr.GetFromArray(arr, 1) != 4 || dstr.GetFromArray(arr, 2) != 6 {
+		t.Fatalf("There is an error witht the selection sort function!")
+	}
+}
+
+func TestInsertionSort(t *testing.T) {
+	var arr dstr.Array[int]
+
+	arr = dstr.AppendToArray(arr, 6)
+	arr = dstr.AppendToArray(arr, 4)
+	arr = dstr.AppendToArray(arr, 3)
+
+	arr = algs.InsertionSort(arr)
+
+	if dstr.GetFromArray(arr, 0) != 3 || dstr.GetFromArray(arr, 1) != 4 || dstr.GetFromArray(arr, 2) != 6 {
+		t.Fatalf("There is an error witht the insertion sort function!")
 	}
 }

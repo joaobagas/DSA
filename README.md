@@ -16,16 +16,15 @@ This repository will include implementations of various data structures and algo
 - [ ] Graphs;
 - [ ] Stacks;
 - [ ] Queues;
-- [ ] Hash Tables;
+- [ ] Hash Maps;
 
 ### Algorithms
 
 - Sorting Algorithms:
     - [x] Bubble Sort;
     - [x] Bubble Sort Revised;
-    - [ ] Selection Sort;
-    - [ ] Insertion Sort;
-    - [ ] Quicksort;
+    - [X] Selection Sort;
+    - [X] Insertion Sort;
 - Searching Algorithms:
     - [ ] Binary Search: 
     - [ ] Depth First Search; 
